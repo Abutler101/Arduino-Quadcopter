@@ -28,12 +28,13 @@ Servo MotorFL;
 Servo MotorFR;
 Servo MotorBL;
 Servo MotorBR;
-
-MotorFL.attach(24);
-MotorFR.attach(26);
-MotorBL.attach(28);
-MotorBR.attach(30);
-
+void setup()
+{
+  MotorFL.attach(24);
+  MotorFR.attach(26);
+  MotorBL.attach(28);
+  MotorBR.attach(30);
+}
 
 //Define control of all motors
 void ALLMOTORS(int A)
@@ -180,11 +181,7 @@ void LbankTurn()
 
 // Execute once on startup
 // Currently used to run control tests
-void setup()
-{
-  ARM();
-  Hover();
-}
+
 
 
 
