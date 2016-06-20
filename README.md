@@ -1,6 +1,6 @@
 # Arduino-Quadcopter
 
-Using the :
+Using the:
   MPU6050 gyro
   Arduino mega
   
