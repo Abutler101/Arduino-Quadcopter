@@ -13,7 +13,31 @@ void setup()
   MotorBL.attach(28);
   MotorBR.attach(30);
   ARM();
-  
+  MotorFL.write(10);
+  MotorFR.write(10);
+  MotorBL.write(10);
+  MotorBR.write(10);
+  delay(2000);
+  MotorFL.write(20);
+  MotorFR.write(20);
+  MotorBL.write(20);
+  MotorBR.write(20);
+  delay(2000);
+  MotorFL.write(40);
+  MotorFR.write(40);
+  MotorBL.write(40);
+  MotorBR.write(40);
+  delay(2000);
+  MotorFL.write(90);
+  MotorFR.write(90);
+  MotorBL.write(90);
+  MotorBR.write(90);
+  delay(2000);
+  MotorFL.write(180);
+  MotorFR.write(180);
+  MotorBL.write(180);
+  MotorBR.write(180);
+  delay(2000);
 }
 
 // Define arming of ESC
