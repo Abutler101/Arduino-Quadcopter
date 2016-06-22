@@ -35,81 +35,6 @@ void ARM()
   MotorBR.write(0);
 }
 
-// Define Hover mode
-// 50% throttle is place holder
-void Hover()
-{
-  MotorFL.write(90);
-  MotorFR.write(90);
-  MotorBL.write(90);
-  MotorBR.write(90);
-  delay(5000)
-}
-
-//Define Bank Left procedure
-//11% throttle increase is place holder
-void LeftBank()
-{
-  MotorFR.write(110);
-  MotorBR.write(110);
-  delay(500);
-  MotorFR.write(90);
-  MotorBR.write(90);
-  MotorFL.write(110);
-  MotorBL.write(110);
-  delay(500);
-  MotorFL.write(90);
-  MotorBL.write(90);
-}
-
-//Define Bank Right procedure
-//11% throttle increase is place holder
-void RightBank()
-{
-  MotorFL.write(110);
-  MotorBL.write(110);
-  delay(500);
-  MotorFL.write(90);
-  MotorBL.write(90);
-  MotorFR.write(110);
-  MotorBR.write(110);
-  delay(500);
-  MotorFR.write(90);
-  MotorBR.write(90);
-}
-
-//Define Pitch Forward procedure
-//11% throttle increase is place holder
-void FrontPitch()
-{
-  MotorBL.write(110);
-  MotorBR.write(110);
-  delay(500);
-  MotorBL.write(90);
-  MotorBR.write(90);
-  MotorFL.write(110);
-  MotorFR.write(110);
-  delay(500);
-  MotorFL.write(90);
-  MotorFR.write(90);
-}
-
-//Define Pitch Rearwards procedure
-//11% throttle increase is place holder
-void BackPitch()
-{
-  MotorFL.write(110);
-  MotorFR.write(110);
-  delay(500);
-  MotorFL.write(90);
-  MotorFR.write(90);
-  MotorBL.write(110);
-  MotorBR.write(110);
-  delay(500);
-  MotorBL.write(90);
-  MotorBR.write(90);
-}
-
 //END MOTOR CONTROL DEFINE
 
 
@@ -170,6 +95,12 @@ void setup() {
 }
 
 void loop() {
+// The motors are set to 50%    
+    MotorFL.write(90);
+    MotorFR.write(90);
+    MotorBL.write(90);
+    MotorBR.write(90);
+// Gyro starts
     if (!dmpReady) return;
 
     // wait for MPU interrupt or extra packet(s) available
@@ -226,24 +157,45 @@ void loop() {
           digitalWrite(17,HIGH);
         }
         
-        if ((ypr[1]* 180/M_PI) < /*Insert value*/)
+        if ((ypr[1]* 180/M_PI) < -5)
         {
-          //Correct with front or rear pair
+          //Correct with rear pair
+            MotorBL.write(110);
+            MotorBR.write(110);
+            delay(250);
+            MotorBL.write(90);
+            MotorBR.write(90);
         }
         
-        if ((ypr[1]* 180/M_PI) < /*Insert value*/)
+        if ((ypr[1]* 180/M_PI) > 5)
         {
-          //Correct with front or rear pair
+          //Correct with front pair
+            MotorFL.write(110);
+            MotorFR.write(110);
+            delay(250);
+            MotorFL.write(90);
+            MotorFR.write(90);
         }
         
-        if ((ypr[2]* 180/M_PI) < /*Insert value*/)
+        if ((ypr[2]* 180/M_PI) < -4)
         {
-          //Correct with Left or Right pair
+          //Correct with Left pair
+            MotorFL.write(110);
+            MotorBL.write(110);
+            delay(250);
+            MotorFL.write(90);
+            MotorBL.write(90);
+          
         }
         
-        if ((ypr[2]* 180/M_PI) < /*Insert value*/)
+        if ((ypr[2]* 180/M_PI) > 4)
         {
-          //Correct with Left or Right pair
+          //Correct with Right pair
+            MotorFR.write(110);
+            MotorBR.write(110);
+            delay(250);
+            MotorFR.write(90);
+            MotorBR.write(90);
         }
         
         // blink LED to indicate activity
