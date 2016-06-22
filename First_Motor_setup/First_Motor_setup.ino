@@ -2,12 +2,12 @@
 
 #include <Servo.h>
 // Define Motors  
+Servo MotorFL;
+Servo MotorFR;
+Servo MotorBL;
+Servo MotorBR;
 void setup()
 {
-  Servo MotorFL;
-  Servo MotorFR;
-  Servo MotorBL;
-  Servo MotorBR;
   MotorFL.attach(24);
   MotorFR.attach(26);
   MotorBL.attach(28);
