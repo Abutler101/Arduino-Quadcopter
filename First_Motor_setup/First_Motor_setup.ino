@@ -8,6 +8,7 @@ Servo MotorBL;
 Servo MotorBR;
 void setup()
 {
+  delay(60000);
   MotorFL.attach(24);
   MotorFR.attach(26);
   MotorBL.attach(28);
