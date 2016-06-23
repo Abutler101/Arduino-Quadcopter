@@ -5,3 +5,5 @@ Using the:
   Arduino mega
   
 A script to balance and control a quadcopters thrust
+
+##60 IS LOWEST THROTTLE VALUE
