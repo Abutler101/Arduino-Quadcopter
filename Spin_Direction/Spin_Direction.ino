@@ -5,25 +5,25 @@ Servo MotorBL;
 Servo MotorBR;
 void setup()
 {
-  MotorFL.attach(24);
-  MotorFR.attach(26);
-  MotorBL.attach(28);
-  MotorBR.attach(30);
+  MotorFL.attach(13);
+  MotorFR.attach(11);
+  MotorBL.attach(9);
+  MotorBR.attach(7);
   delay(60000);
-  MotorFL.write(0);
-  MotorFR.write(0);
-  MotorBL.write(0);
-  MotorBR.write(0);
+  MotorFL.write(60);
+  MotorFR.write(60);
+  MotorBL.write(60);
+  MotorBR.write(60);
   delay(1000);
-  MotorFL.write(10);
-  MotorFR.write(10);
-  MotorBL.write(10);
-  MotorBR.write(10);
+  MotorFL.write(70);
+  MotorFR.write(70);
+  MotorBL.write(70);
+  MotorBR.write(70);
   delay(60000);
-  MotorFL.write(0);
-  MotorFR.write(0);
-  MotorBL.write(0);
-  MotorBR.write(0);
+  MotorFL.write(60);
+  MotorFR.write(60);
+  MotorBL.write(60);
+  MotorBR.write(60);
 }
 
 void loop()

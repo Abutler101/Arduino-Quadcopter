@@ -19,20 +19,20 @@ bool blinkState = false;
 // Define arming of ESC
 void ARM()
 {
-  MotorFL.write(0);
-  MotorFR.write(0);
-  MotorBL.write(0);
-  MotorBR.write(0);
+  MotorFL.write(60);
+  MotorFR.write(60);
+  MotorBL.write(60);
+  MotorBR.write(60);
   delay(500);
   MotorFL.write(10);
   MotorFR.write(10);
   MotorBL.write(10);
   MotorBR.write(10);
   delay(500);
-  MotorFL.write(0);
-  MotorFR.write(0);
-  MotorBL.write(0);
-  MotorBR.write(0);
+  MotorFL.write(60);
+  MotorFR.write(60);
+  MotorBL.write(60);
+  MotorBR.write(60);
 }
 
 //END MOTOR CONTROL DEFINE
@@ -60,10 +60,10 @@ void dmpDataReady() {
 }
 
 void setup() {
-    MotorFL.attach(24);
-    MotorFR.attach(26);
-    MotorBL.attach(28);
-    MotorBR.attach(30);
+    MotorFL.attach(13);
+    MotorFR.attach(11);
+    MotorBL.attach(9);
+    MotorBR.attach(7);
     pinMode(16,OUTPUT);
     pinMode(17,OUTPUT);
     // join I2C bus (I2Cdev library doesn't do this automatically)
@@ -96,10 +96,10 @@ void setup() {
 
 void loop() {
 // The motors are set to 50%    
-    MotorFL.write(90);
-    MotorFR.write(90);
-    MotorBL.write(90);
-    MotorBR.write(90);
+//    MotorFL.write(90);        //WORKOUT HOVER THROTTLE!!!
+//    MotorFR.write(90);        //WORKOUT HOVER THROTTLE!!!
+//    MotorBL.write(90);        //WORKOUT HOVER THROTTLE!!!
+//    MotorBR.write(90);        //WORKOUT HOVER THROTTLE!!!
 // Gyro starts
     if (!dmpReady) return;
 
@@ -156,7 +156,7 @@ void loop() {
           digitalWrite(16,LOW);
           digitalWrite(17,HIGH);
         }
-        
+/*                                                                                  WORK OUT THROTTLE VALUES!!! 
         if ((ypr[1]* 180/M_PI) < -5)
         {
           //Correct with rear pair
@@ -197,7 +197,7 @@ void loop() {
             MotorFR.write(90);
             MotorBR.write(90);
         }
-        
+ */       
         // blink LED to indicate activity
         blinkState = !blinkState;
         digitalWrite(LED_PIN, blinkState);

@@ -9,25 +9,20 @@ Servo MotorBR;
 void setup()
 {
   delay(60000);
-  MotorFL.attach(24);
-  MotorFR.attach(26);
-  MotorBL.attach(28);
-  MotorBR.attach(30);
+  MotorFL.attach(13);
+  MotorFR.attach(11);
+  MotorBL.attach(9);
+  MotorBR.attach(7);
   ARM();
-  MotorFL.write(10);
-  MotorFR.write(10);
-  MotorBL.write(10);
-  MotorBR.write(10);
+  MotorFL.write(70);
+  MotorFR.write(70);
+  MotorBL.write(70);
+  MotorBR.write(70);
   delay(2000);
-  MotorFL.write(20);
-  MotorFR.write(20);
-  MotorBL.write(20);
-  MotorBR.write(20);
-  delay(2000);
-  MotorFL.write(40);
-  MotorFR.write(40);
-  MotorBL.write(40);
-  MotorBR.write(40);
+  MotorFL.write(80);
+  MotorFR.write(80);
+  MotorBL.write(80);
+  MotorBR.write(80);
   delay(2000);
   MotorFL.write(90);
   MotorFR.write(90);
@@ -44,10 +39,10 @@ void setup()
 // Define arming of ESC
 void ARM()
 {
-  MotorFL.write(0);
-  MotorFR.write(0);
-  MotorBL.write(0);
-  MotorBR.write(0);
+  MotorFL.write(60);
+  MotorFR.write(60);
+  MotorBL.write(60);
+  MotorBR.write(60);
 }
 
 
