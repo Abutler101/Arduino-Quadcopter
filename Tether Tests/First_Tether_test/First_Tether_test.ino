@@ -1,4 +1,6 @@
-#include <Servo.h> 
+#include <Arduino.h>
+#include <Servo.h>
+
 Servo MotorFL;
 Servo MotorFR;
 Servo MotorBL;
@@ -12,22 +14,22 @@ void setup() {
   MotorFL.attach(13);
   MotorFR.attach(11);
   MotorBL.attach(9);
-  MotorBR.attach(7); 
+  MotorBR.attach(7);
   delay(60000)
   MotorFL.write(70);
   MotorFR.write(70);
   MotorBL.write(70);
-  MotorBR.write(70); 
+  MotorBR.write(70);
   delay(30000)
   MotorFL.write(80);
   MotorFR.write(80);
   MotorBL.write(80);
-  MotorBR.write(80); 
+  MotorBR.write(80);
   delay(30000)
   MotorFL.write(90);
   MotorFR.write(90);
   MotorBL.write(90);
-  MotorBR.write(90); 
+  MotorBR.write(90);
   delay(30000)
   MotorFL.write(100);
   MotorFR.write(100);
@@ -47,12 +49,12 @@ void setup() {
   MotorFL.write(140);
   MotorFR.write(140);
   MotorBL.write(140);
-  MotorBR.write(140); 
+  MotorBR.write(140);
   delay(10000)
   MotorFL.write(160);
   MotorFR.write(160);
   MotorBL.write(160);
-  MotorBR.write(160); 
+  MotorBR.write(160);
   delay(10000)
   MotorFL.write(180);
   MotorFR.write(180);
@@ -60,5 +62,6 @@ void setup() {
   MotorBR.write(180);
 }
 
-void loop()
-{}
+void loop() {
+
+}

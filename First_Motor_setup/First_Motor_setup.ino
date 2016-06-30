@@ -1,13 +1,14 @@
-// use .write(0 -> 180) 
+// use .write(0 -> 180)
 
+#include <Arduino.h>
 #include <Servo.h>
-// Define Motors  
+// Define Motors
 Servo MotorFL;
 Servo MotorFR;
 Servo MotorBL;
 Servo MotorBR;
-void setup()
-{
+
+void setup() {
   delay(60000);
   MotorFL.attach(13);
   MotorFR.attach(11);
@@ -37,18 +38,9 @@ void setup()
 }
 
 // Define arming of ESC
-void ARM()
-{
+void ARM() {
   MotorFL.write(60);
   MotorFR.write(60);
   MotorBL.write(60);
   MotorBR.write(60);
 }
-
-
-
-
-
-
-
-

@@ -1,10 +1,12 @@
+#include <Arduino.h>
 #include <Servo.h>
+
 Servo MotorFL;
 Servo MotorFR;
 Servo MotorBL;
 Servo MotorBR;
-void setup()
-{
+
+void setup() {
   MotorFL.attach(13);
   MotorFR.attach(11);
   MotorBL.attach(9);
@@ -26,5 +28,6 @@ void setup()
   MotorBR.write(60);
 }
 
-void loop()
-{}
+void loop() {
+
+}

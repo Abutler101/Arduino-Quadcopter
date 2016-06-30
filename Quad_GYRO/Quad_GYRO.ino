@@ -1,3 +1,4 @@
+#include <Arduino.h>
 #include "I2Cdev.h"
 #include "MPU6050_6Axis_MotionApps20.h"
 #if I2CDEV_IMPLEMENTATION == I2CDEV_ARDUINO_WIRE
@@ -10,15 +11,14 @@ bool blinkState = false;
 
 //DEFINE MOTOR CONTROLS
 #include <Servo.h>
-// Define Motors  
+// Define Motors
   Servo MotorFL;
   Servo MotorFR;
   Servo MotorBL;
   Servo MotorBR;
-  
+
 // Define arming of ESC
-void ARM()
-{
+void ARM() {
   MotorFL.write(60);
   MotorFR.write(60);
   MotorBL.write(60);
@@ -83,28 +83,29 @@ void setup() {
     mpu.setZAccelOffset(1688);
     if (devStatus == 0) {
         mpu.setDMPEnabled(true);
-        // enable Arduino interrupt detection
+        // TODO: Enable Arduino interrupt detection.
         Serial.println(F("Enabling interrupt detection (Arduino external interrupt 0)..."));
         attachInterrupt(0, dmpDataReady, RISING);
         mpuIntStatus = mpu.getIntStatus();
         dmpReady = true;
         packetSize = mpu.dmpGetFIFOPacketSize();
-    } 
-    // configure LED for output
+    }
+    // TODO: Configure LED for output.
     pinMode(LED_PIN, OUTPUT);
 }
 
 void loop() {
-// The motors are set to 50%    
-//    MotorFL.write(90);        //WORKOUT HOVER THROTTLE!!!
-//    MotorFR.write(90);        //WORKOUT HOVER THROTTLE!!!
-//    MotorBL.write(90);        //WORKOUT HOVER THROTTLE!!!
-//    MotorBR.write(90);        //WORKOUT HOVER THROTTLE!!!
+// The motors are set to 50%
+//    MotorFL.write(90);        //TODO: Workout hover values.
+//    MotorFR.write(90);        //TODO: Workout hover values.
+//    MotorBL.write(90);        //TODO: Workout hover values.
+//    MotorBR.write(90);        //TODO: Workout hover values.
 // Gyro starts
     if (!dmpReady) return;
 
     // wait for MPU interrupt or extra packet(s) available
     while (!mpuInterrupt && fifoCount < packetSize) {
+
     }
 
     // reset interrupt flag and get INT_STATUS byte
@@ -127,7 +128,7 @@ void loop() {
 
         // read a packet from FIFO
         mpu.getFIFOBytes(fifoBuffer, packetSize);
-        
+
         // track FIFO count here in case there is > 1 packet available
         // (this lets us immediately read more without waiting for an interrupt)
         fifoCount -= packetSize;
@@ -144,21 +145,20 @@ void loop() {
             Serial.print("\t");
             Serial.println(ypr[2] * 180/M_PI);
         #endif
-// USE MOTOR LVLING HERE FOR STABLE FLIGHT!!!
-        if ((ypr[1]* 180/M_PI) < -5 or (ypr[1]* 180/M_PI) > 5 or (ypr[2]* 180/M_PI) < -4 or (ypr[2]* 180/M_PI) > 4)
-        {
+
+// TODO: Use motor leveling for stable flight.
+        if ((ypr[1]* 180/M_PI) < -5 or (ypr[1]* 180/M_PI) > 5 or (ypr[2]* 180/M_PI) < -4 or (ypr[2]* 180/M_PI) > 4) {
           digitalWrite(17,LOW);
           digitalWrite(16,HIGH);
         }
 
-        if ((ypr[1]* 180/M_PI) > -5 and (ypr[1]* 180/M_PI) < 5 and (ypr[2]* 180/M_PI) > -4 and (ypr[2]* 180/M_PI) < 4)
-        {
+        if ((ypr[1]* 180/M_PI) > -5 and (ypr[1]* 180/M_PI) < 5 and (ypr[2]* 180/M_PI) > -4 and (ypr[2]* 180/M_PI) < 4) {
           digitalWrite(16,LOW);
           digitalWrite(17,HIGH);
         }
-/*                                                                                  WORK OUT THROTTLE VALUES!!! 
-        if ((ypr[1]* 180/M_PI) < -5)
-        {
+
+/* TODO: Workout thottle values.
+        if ((ypr[1]* 180/M_PI) < -5) {
           //Correct with rear pair
             MotorBL.write(110);
             MotorBR.write(110);
@@ -166,9 +166,8 @@ void loop() {
             MotorBL.write(90);
             MotorBR.write(90);
         }
-        
-        if ((ypr[1]* 180/M_PI) > 5)
-        {
+
+        if ((ypr[1]* 180/M_PI) > 5) {
           //Correct with front pair
             MotorFL.write(110);
             MotorFR.write(110);
@@ -176,20 +175,18 @@ void loop() {
             MotorFL.write(90);
             MotorFR.write(90);
         }
-        
-        if ((ypr[2]* 180/M_PI) < -4)
-        {
+
+        if ((ypr[2]* 180/M_PI) < -4) {
           //Correct with Left pair
             MotorFL.write(110);
             MotorBL.write(110);
             delay(250);
             MotorFL.write(90);
             MotorBL.write(90);
-          
+
         }
-        
-        if ((ypr[2]* 180/M_PI) > 4)
-        {
+
+        if ((ypr[2]* 180/M_PI) > 4) {
           //Correct with Right pair
             MotorFR.write(110);
             MotorBR.write(110);
@@ -197,7 +194,7 @@ void loop() {
             MotorFR.write(90);
             MotorBR.write(90);
         }
- */       
+ */
         // blink LED to indicate activity
         blinkState = !blinkState;
         digitalWrite(LED_PIN, blinkState);
