@@ -1,4 +1,5 @@
-// use .write(0 -> 180)
+// use .write(60 -> 180)
+//FRONT 2 NEED HIGHER THROTTLE VALUES
 
 #include <Arduino.h>
 #include <Servo.h>
